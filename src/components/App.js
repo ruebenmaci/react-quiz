@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Main from "./Main";
-//import Loader from "./Loader";
+import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
@@ -20,7 +20,7 @@ export default function App() {
       <Header />
 
       <Main>
-        {/*status === "loading" && <Loader />*/}
+        {status === "loading" && <Loader />}
         {status === "error" && <Error />}
         {status === "ready" && <StartScreen />}
         {status === "active" && (

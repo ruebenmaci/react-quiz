@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const QuizContext = createContext();
 
@@ -146,10 +146,10 @@ const testQuestions = [
 ];
 
 const initialState = {
-  questions: testQuestions,
+  questions: [],
 
   // 'loading', 'error', 'ready', 'active', 'finished'
-  status: "active",
+  status: "loading",
   index: 0,
   answer: null,
   points: 0,
@@ -159,12 +159,12 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    /*case "dataReceived":
+    case "dataReceived":
       return {
         ...state,
         questions: action.payload,
         status: "ready",
-      };*/
+      };
     case "dataFailed":
       return {
         ...state,
@@ -223,12 +223,13 @@ function QuizProvider({ children }) {
     0
   );
 
-  /*useEffect(function () {
+  useEffect(function () {
     /*fetch("http://localhost:9000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
-  }, []);*/
+      .catch((err) => dispatch({ type: "dataFailed" }));*/
+    dispatch({ type: "dataReceived", payload: testQuestions });
+  }, []);
 
   return (
     <QuizContext.Provider

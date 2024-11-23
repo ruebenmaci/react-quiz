@@ -7,6 +7,8 @@ function Timer() {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
 
+  console.log(mins, seconds, secondsRemaining);
+
   useEffect(
     function () {
       const id = setInterval(function () {
